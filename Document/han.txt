@@ -1,0 +1,133 @@
+1. Đấu nối phần cứng đúng trên Proteus (1 điểm)
+Ý câu hỏi:
+Sinh viên có hiểu hệ thống phần cứng hay không
+Có biết mỗi linh kiện dùng để làm gì không
+Có biết kết nối đúng với vi điều khiển không
+
+Sinh viên cần trả lời những gì:
+Liệt kê đầy đủ linh kiện sử dụng
+Mô tả cách nối từng chân (GPIO nào → thiết bị nào)
+Nêu vai trò của từng linh kiện
+
+Gợi ý cách trả lời:
+Hệ thống sử dụng các linh kiện gồm: …
+Các linh kiện được kết nối với vi điều khiển thông qua các chân …
+Điện trở được sử dụng để … (hạn dòng / kéo lên / kéo xuống)
+GND và VCC được nối như thế nào
+
+Mức đạt điểm cao:
+Có giải thích “tại sao phải nối như vậy”
+Ví dụ: tránh cháy LED, đảm bảo tín hiệu ổn định
+2. Cấu hình IO đúng trên công cụ sinh code STMCubeIDE hoặc STM32CubeMX (1 điểm)
+
+Ý câu hỏi:
+Sinh viên có hiểu cấu hình chân GPIO không
+Có biết chọn mode đúng với chức năng không
+
+Sinh viên cần trả lời:
+Chân nào được dùng
+Mode: Input / Output / Alternate
+Có dùng pull-up/pull-down không
+Tại sao lại cấu hình Clock như vậy?
+Tại sao có các giá trị cài đặt vào ADC, Timer, PWM, UART,... như vậy?
+Gợi ý cách trả lời:
+Chân … được cấu hình ở chế độ Output Push-Pull để điều khiển …
+Chế độ này cho phép vi điều khiển xuất tín hiệu mức cao/thấp rõ ràng
+Không sử dụng pull-up/pull-down vì …
+Cấu hình các giá trị này vì...
+Cấu hình tần số, clock như thế này vì...
+Mức đạt điểm cao:
+Có giải thích lý do chọn mode
+Không chỉ ghi “cấu hình Output”
+3. Sử dụng thành thạo bộ công cụ STM32CubeIDE (hoặc STM32CubeMX + KeilC MDK-ARM) và Proteus. (1 điểm):
+
+Ý câu hỏi:
+Sinh viên có hiểu quy trình làm việc thực tế không
+Có biết cách triển khai từ thiết kế → code → chạy không
+
+Sinh viên cần trả lời:
+Các bước thực hiện project
+Gợi ý cách trả lời:
+Tạo project trên CubeMX
+Cấu hình ngoại vi
+Generate code
+Lập trình trên CubeIDE
+Build chương trình
+Nạp code hoặc mô phỏng trên Proteus
+
+Mức đạt điểm cao:
+Trình bày theo quy trình rõ ràng
+Thể hiện hiểu toolchain
+4. Tích hợp thành công file class vào project. (1 điểm):
+
+Ý câu hỏi:
+Kiểm tra khả năng tổ chức code
+Có hiểu lập trình module không
+Đưa file class vào đâu? Nội dung có gì?
+
+Sinh viên cần trả lời:
+Cách thêm file class vào project
+Cách include
+
+Gợi ý cách trả lời:
+File class được thêm vào project qua các thao tác sau...
+Nội dung file class là.... Lấy ở....
+Sử dụng chỉ thị #include để khai báo
+Class dùng để quản lý chức năng …
+
+Mức đạt điểm cao:
+Hiểu class dùng để làm gì, không chỉ “add file”
+5. Main.c: Khai báo, sử dụng được các object có kiểu của class. (1 điểm)
+
+Ý câu hỏi:
+Sinh viên có hiểu lập trình hướng đối tượng không
+Có biết sử dụng class không
+Class có các object nào? Các object đó được sử dụng ở đâu trong main? Ý nghĩa tương ứng của class đó ở từng nội dung tương ứng trong main là gì?
+
+Sinh viên cần trả lời:
+Khai báo object
+Giải thích tham số
+
+Gợi ý cách trả lời:
+
+Một đối tượng được tạo từ class để quản lý …
+Tham số truyền vào thể hiện …
+
+Mức đạt điểm cao:
+Giải thích được ý nghĩa object, không chỉ viết code
+6. Lập trình class logic hoạt động đúng nhiệm vụ. (1 điểm)
+
+Ý câu hỏi:
+Sinh viên có hiểu thuật toán hay chỉ copy code
+Có hiểu hệ thống vận hành như thế nào không
+
+Sinh viên cần trả lời:
+Mô tả logic hoạt động từng bước, điều đó thể hiện ở phần nào trong chương trình (đa số nên mô tả tập trung trong vòng lặp while (1) của main
+
+Gợi ý cách trả lời:
+Hệ thống hoạt động theo nguyên lý …
+Khi điều kiện … xảy ra thì …
+Sau đó hệ thống thực hiện …
+
+Mức đạt điểm cao:
+Mô tả bằng logic (flow): dạng từng bước, từng quy trình cần có khi lập trình
+7. Hệ thống hoạt động đúng kịch bản đề bài yêu cầu. (1 điểm)
+
+Ý câu hỏi:
+Có mô phỏng chạy ra kết quả không
+Có hiểu kết quả không
+
+Sinh viên cần trả lời:
+Mô tả hành vi thực tế của hệ thốngs
+
+Gợi ý cách trả lời:
+Khi hệ thống hoạt động, quan sát thấy …
+Sau một khoảng thời gian … hệ thống …
+Kết quả phù hợp với yêu cầu đề bài vì …
+8. Có kỹ năng lập trình. (1 điểm)
+Thể hiện qua việc diễn giải chương trình và có thể lập trình được bài cơ bản tương tự
+9. Hiểu được các thành phần ngoại vi STM32 đã sử dụng. (1 điểm)
+
+Các ngoại vi (linh kiện bên ngoài lắp vào STM32 hoặc hoạt động của PWM, TIMER, ACD, UART,..) hoạt động như thế nào? Chức năng của các chân linh kiện tương ứng
+10. Trả lời được câu hỏi cuối đề. (1 điểm): 
+Có trong đề: cần chuẩn bị chắc chắn trước, gắn liền với phần thực hành trong đề chứ ko phải lý thuyết chung chung
