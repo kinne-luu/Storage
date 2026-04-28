@@ -1,0 +1,81 @@
+-------------------------------------------------
+
+Button btn1(GPIOA, GPIO_PIN_1);
+LCD8 lcd(GPIOA, GPIOA, GPIO_PIN_8, GPIOA, GPIO_PIN_10);
+PwmOut ledPwm(&htim1, TIM_CHANNEL_2);
+
+SoftTimer uartTimer, lcdTimer, blinkTimer, timeoutTimer;
+uint32_t adcVal = 0;
+int pwmVal = 0;
+bool isMeasuring = false, isBlinking = false;
+
+-------------------------------------------------
+
+HAL_ADC_Start(&hadc1);      // Đọc biến trở
+lcd.begin();                // Bật màn hình
+ledPwm.start();             // Bật PWM
+ledPwm.setDuty(pwmVal);
+
+uartTimer.setInterval(500); // Tốc độ gửi UART
+lcdTimer.setInterval(500);  // Tốc độ quét màn hình
+blinkTimer.setInterval(250);// Tốc độ nháy LED
+
+-------------------------------------------------
+
+// 1. NÚT NHẤN (Tăng giảm PWM / Đếm giờ)
+
+
+
+if (btn1.isPressed()) {
+    isMeasuring = true; 
+    timeoutTimer.setInterval(10000); // 10s tự ngắt
+    /* Code đổi PWM: pwmVal+=8; if(pwmVal>100) pwmVal=100; ledPwm.setDuty(pwmVal); */
+}
+if (isMeasuring && timeoutTimer.check()) isMeasuring = false;
+
+// 2. ĐỌC ADC VÀ PHÂN LOẠI
+
+
+
+HAL_ADC_PollForConversion(&hadc1, 10);
+adcVal = HAL_ADC_GetValue(&hadc1);
+
+if (adcVal < 1200) { 
+    // Làm việc A (Bật tắt LED / Đổi PWM) 
+} else if (adcVal <= 2800) { 
+    // Làm việc B 
+} else { 
+    isBlinking = true; // Bật cờ nháy LED 
+}
+
+// 3. NHẤP NHÁY LED
+
+
+
+if (isBlinking) {
+    if (blinkTimer.check()) HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_11);
+} else {
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_11, GPIO_PIN_RESET); // Tắt LED
+}
+
+
+// 4. HIỂN THỊ LCD
+
+
+
+if (lcdTimer.check()) {
+    lcd.clear(); lcd.setCursor(0, 0);
+    lcd.print("Gia tri: "); lcd.print(adcVal);
+}
+
+
+
+// 5. BÁO CÁO UART
+
+
+
+if (uartTimer.check()) {
+    char msg[30];
+    sprintf(msg, "ADC = %lu\r\n", adcVal);
+    HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), 100);
+}
